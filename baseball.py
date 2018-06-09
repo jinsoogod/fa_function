@@ -424,57 +424,15 @@ def get_strikes_or_ball(user_input_number, random_number):
 
 def is_yes(one_more_input):
 
-     # '''
+    conv = one_more_input.upper()
 
-     # Input:
+    if(conv == 'Y' or conv == 'YES'):
 
-     #   - one_more_input : 문자열값으로 사용자가 입력하는 문자
+        result = True
 
-     # Output:
+    else:
 
-     #   - 입력한 값이 대소문자 구분없이 "Y" 또는 "YES"일 경우 True,
-
-     #     그렇지 않을 경우 False를 반환함
-
-     # Examples:
-
-     #   >>> import baseball_game as bg
-
-     # >>> bg.is_yes("Y")
-
-     # True
-
-     # >>> bg.is_yes("y")
-
-     # True
-
-     # >>> bg.is_yes("Yes")
-
-     # True
-
-     # >>> bg.is_yes("YES")
-
-     # True
-
-     # >>> bg.is_yes("abc")
-
-     # False
-
-     # >>> bg.is_yes("213")
-
-     # False
-
-     # >>> bg.is_yes("4562")
-
-     # False
-
-     # '''
-
-     # ===Modify codes below=============
-
-     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당
-
-
+        result = False
 
      # ==================================
 
@@ -536,7 +494,15 @@ def is_no(one_more_input):
 
 
 
-  
+    conv = one_more_input.upper()
+
+    if(conv == 'N' or conv == 'NO'):
+
+        result = True
+
+    else:
+
+        result = False
 
      # ==================================
 
@@ -558,7 +524,43 @@ def main():
 
      #user_input = input('Input guess number : ')
 
+    while(user_input is not '0'):
 
+        random_number = str(get_not_duplicated_three_digit_number())
+
+        print("Random Number is : ", random_number)
+
+        while(user_input is not '0'):
+
+            user_input = input('Input guess number : ')
+
+            if(is_validated_number(user_input) is True):
+
+                result = get_strikes_or_ball(user_input,random_number)
+
+                print('Strikes : ',result[0],', Balls : ',result[1])
+
+                if(result[0] == 3):
+
+                    user_answer = input('You win, one more(Y/N)?')
+
+                    while(is_yes(user_answer) is not True and is_no(user_answer) is not True):
+
+                        print('Wrong Input, Input again')
+
+                        user_answer = input('You win, one more(Y/N)?')
+
+                    if(is_yes(user_answer) is True):
+
+                        break
+
+                    elif(is_no(user_answer) is True):
+
+                        user_input = '0'
+
+            else:
+
+                print('Wrong Input, Input again')
 
      # ==================================
 
