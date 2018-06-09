@@ -476,16 +476,6 @@ def is_yes(one_more_input):
 
 
 
-    conv = one_more_input.upper()
-
-    if(conv == 'Y' or conv == 'YES'):
-
-        result = True
-
-    else:
-
-        result = False
-
      # ==================================
 
     return result
@@ -546,15 +536,7 @@ def is_no(one_more_input):
 
 
 
-    conv = one_more_input.upper()
-
-    if(conv == 'N' or conv == 'NO'):
-
-        result = True
-
-    else:
-
-        result = False
+  
 
      # ==================================
 
@@ -576,43 +558,7 @@ def main():
 
      #user_input = input('Input guess number : ')
 
-    while(user_input is not '0'):
 
-        random_number = str(get_not_duplicated_three_digit_number())
-
-        print("Random Number is : ", random_number)
-
-        while(user_input is not '0'):
-
-            user_input = input('Input guess number : ')
-
-            if(is_validated_number(user_input) is True):
-
-                result = get_strikes_or_ball(user_input,random_number)
-
-                print('Strikes : ',result[0],', Balls : ',result[1])
-
-                if(result[0] == 3):
-
-                    user_answer = input('You win, one more(Y/N)?')
-
-                    while(is_yes(user_answer) is not True and is_no(user_answer) is not True):
-
-                        print('Wrong Input, Input again')
-
-                        user_answer = input('You win, one more(Y/N)?')
-
-                    if(is_yes(user_answer) is True):
-
-                        break
-
-                    elif(is_no(user_answer) is True):
-
-                        user_input = '0'
-
-            else:
-
-                print('Wrong Input, Input again')
 
      # ==================================
 
